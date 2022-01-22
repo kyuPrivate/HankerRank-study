@@ -1,21 +1,48 @@
 package com.company;
 
 import java.io.*;
-public class Solution {
-    public static void main(String[] args) throws IOException {
-        // do not change
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+import java.util.*;
 
-        // write code here
-        int result = 0;
+class Player {
+    String name;
+    int score;
 
-        // do not change
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-        bufferedReader.close();
-        bufferedWriter.close();
+    Player(String name, int score) {
+        this.name = name;
+        this.score = score;
     }
 }
 
+class Checker implements Comparator<Player> {
+    // complete this method
+    public int compare(Player a, Player b) {
+        if (a.score == b.score) {
+            return a.name.compareTo(b.name);
+        } else {
+            return a.score > b.score ? -1 : 1;
+        }
+    }
+}
+
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+
+        Player[] player = new Player[n];
+        Checker checker = new Checker();
+
+        for(int i = 0; i < n; i++){
+            player[i] = new Player(scan.next(), scan.nextInt());
+        }
+        scan.close();
+
+        Arrays.sort(player, checker);
+        for(int i = 0; i < player.length; i++){
+            System.out.printf("%s %s\n", player[i].name, player[i].score);
+        }
+    }
+}
 
