@@ -57,7 +57,7 @@ class Result {
 
         System.out.println("Array is sorted in " + swapCount + " swaps.");
         System.out.println("First Element: " + a.get(0));
-        System.out.println("First Element: " + a.get(a.size() - 1));
+        System.out.println("Last Element: " + a.get(a.size() - 1));
     }
 
     public static void swap(int i, int j, List<Integer> a) {
